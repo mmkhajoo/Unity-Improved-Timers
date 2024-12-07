@@ -6,6 +6,8 @@ namespace ImprovedTimers {
     /// </summary>
     public class CountdownTimer : Timer {
         public CountdownTimer(float value) : base(value) { }
+        
+        public Action OnEnd;
 
         public override void Tick() {
             if (IsRunning && CurrentTime > 0) {
@@ -13,6 +15,7 @@ namespace ImprovedTimers {
             }
 
             if (IsRunning && CurrentTime <= 0) {
+                OnEnd.Invoke();
                 Stop();
             }
         }
