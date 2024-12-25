@@ -16,7 +16,7 @@ namespace ImprovedTimers {
             }
 
             if (IsRunning && CurrentTime <= 0) {
-                OnEnd.Invoke();
+                OnEnd?.Invoke();
                 Stop();
             }
         }
